@@ -49,7 +49,14 @@
               ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('numberValidateForm')">提交</el-button>
+              <aliyun-capcha appkey="FFFF00000000016C4A73" scene="login" v-on:callback="onCaptcha"></aliyun-capcha>
+            </el-form-item>
+            <el-form-item>
+              <el-button
+                :disabled="isDisable"
+                type="primary"
+                @click="submitForm('numberValidateForm')"
+              >提交</el-button>
               <el-button @click="resetForm('numberValidateForm')">重置</el-button>
             </el-form-item>
           </el-form>
@@ -60,25 +67,28 @@
 </template>
 
 <script>
+import AliyunCaptcha from "../vender/AliyunCaptcha";
 export default {
   data() {
     return {
+      isDisable: true,
       numberValidateForm: {
         account: "",
         password: "",
       },
     };
   },
+  components: {
+    "aliyun-capcha": AliyunCaptcha,
+  },
   methods: {
     submitForm(formName) {
-      var that = this;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           if (
-            this.numberValidateForm.account == 123 &&
+            this.numberValidateForm.account == "123" &&
             this.numberValidateForm.password == "123"
           ) {
-            // Router.push("/home");
             this.$router.push("home");
           } else {
             alert("密码错误");
@@ -91,6 +101,17 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+      this.nc.reset(); //重置滑块
+    },
+    onCaptcha(data) {
+      this.csessionid = data.csessionid;
+      this.sig = data.sig;
+      this.token = data.token;
+      this.scene = data.scene;
+      this.nc = data.nc;
+
+      //允许登录按钮点击
+      this.isDisable = false;
     },
   },
 };
