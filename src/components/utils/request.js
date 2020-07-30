@@ -8,14 +8,15 @@ axios.defaults.baseURL = '';
 //http request 拦截器
 axios.interceptors.request.use(
     config => {
-        // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
         config.data = JSON.stringify(config.data);
         config.headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json',
         }
-        // if(token){
-        //   config.params = {'token':token}
-        // }
+        var token = localStorage.getItem('logintoken')
+        //token在header里放的,如果token不为空就添加到header里
+        if (token != null) {
+            config.headers["token"] = token
+        }
         return config;
     },
     error => {
