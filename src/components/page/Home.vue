@@ -1,14 +1,37 @@
 <template>
+  <!-- 
+    el-row 行
+    :gutter="20" 分栏间隔,也就是两列之间的距离
+
+    el-col 列
+    :span 列宽,列宽最大是浏览器的宽度,是24个单位
+    :offset 偏移,距左边的距离
+    bg-purple style里对应的颜色
+  -->
   <div>
-    <el-row :gutter="20">
+    <el-row>
+      <el-col :span="24" offset="0">
+        <div class="grid-content bg-purple-dark"></div>
+      </el-col>
+    </el-row>
+    <el-row>
       <el-col :span="16" :offset="4">
         <div class="grid-content bg-purple"></div>
       </el-col>
     </el-row>
     <el-row :gutter="20">
+      <el-col :span="12" :offset="0">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+      <el-col :span="12" :offset="0">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
       <el-col :span="16" :offset="4">
         <el-container style="height: 500px; border: 1px solid #eee">
-          <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+          <el-aside width="200px" style="background-color: red">
             <el-menu :default-openeds="['1', '3']">
               <el-submenu index="1">
                 <template slot="title">
@@ -107,13 +130,34 @@ export default {
 </script>
 
 <style>
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    color: #333;
-  }
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+}
+
+.el-aside {
+  color: #333;
+}
+
+.el-row {
+  margin-bottom: 5px; /* 每一行跟底边距5px */
+}
+
+.el-col {
+  border-radius: 4px; /* 圆角 */
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
 </style>

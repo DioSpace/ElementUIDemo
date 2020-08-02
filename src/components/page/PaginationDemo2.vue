@@ -69,10 +69,10 @@ export default {
         this.allData.push(map);
       }
       this.pageparm.total = this.allData.length;
-      this.update();
+      this.updateTableData();
     },
     //更新当页显示的数据
-    update() {
+    updateTableData() {
       this.loading = true;
       this.tableData = [];
       var start = (this.pageparm.currentPage - 1) * this.pageparm.pageSize;
