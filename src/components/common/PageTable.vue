@@ -1,3 +1,6 @@
+/**
+* 分页组件
+*/ 
 <template>
   <div id="commonTable">
     <el-table

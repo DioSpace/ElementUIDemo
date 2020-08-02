@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import PageTable from "../common/PageTable";
+import PageTable from "../../common/PageTable";
 
 export default {
   data() {

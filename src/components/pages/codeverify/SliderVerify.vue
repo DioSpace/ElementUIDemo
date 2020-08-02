@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <form novalidate @submit.stop.prevent="submit">
       <div>
         <label>登录名</label>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AliyunCaptcha from "../vender/AliyunCaptcha";
+import AliyunCaptcha from "../../vender/AliyunCaptcha";
 export default {
   name: "app",
   data() {
@@ -35,7 +35,7 @@ export default {
       this.token = data.token;
       this.scene = data.scene;
       this.nc = data.nc;
-      alert("success");
+      this.$message("滑动验证成功!");
     },
     onSignin() {
       // let user = {password: this.password
@@ -61,8 +61,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 </style>

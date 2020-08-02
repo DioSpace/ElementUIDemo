@@ -89,7 +89,7 @@ export default {
             this.numberValidateForm.account == "123" &&
             this.numberValidateForm.password == "123"
           ) {
-            this.$router.push("home");
+            this.$router.push("main");
           } else {
             alert("密码错误");
           }

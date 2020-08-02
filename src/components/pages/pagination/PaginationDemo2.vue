@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Pagination from "../common/Pagination";
+import Pagination from "../../common/Pagination";
 export default {
   data() {
     return {
@@ -86,7 +86,7 @@ export default {
     callFather(parm) {
       this.pageparm.currentPage = parm.currentPage;
       this.pageparm.pageSize = parm.pageSize;
-      this.update();
+      this.updateTableData();
     },
   },
 };

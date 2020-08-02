@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <el-row>
       <el-button @click="originGet">Get请求</el-button>
       <el-button @click="httpGet" type="primary">http Get请求</el-button>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import api from "../utils/api";
+import api from "../../utils/api";
 import axios from "axios";
 
 export default {
